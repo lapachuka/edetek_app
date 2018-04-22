@@ -10,6 +10,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {UpdateDepartmentComponent} from './modal/update-department.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -18,8 +20,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatTableModule,
     MatButtonModule,
+    MatInputModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [DepartmentService],
   declarations: [DepartmentComponent, UpdateDepartmentComponent],

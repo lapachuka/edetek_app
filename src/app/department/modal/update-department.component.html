@@ -1,8 +1,37 @@
-<h1 mat-dialog-title>Hi</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button cdkFocusInitial>Ok</button>
-</div>
+<form class="add-pet-form" [formGroup]="departmentForm" (ngSubmit)="editDepartment(departmentForm)">
+  <h2 mat-dialog-title>Department details</h2>
+  <div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="Department name"
+        formControlName='name'>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+    <textarea
+      matInput
+      placeholder="Department description"
+      formControlName='description'></textarea>
+    </mat-form-field>
+
+
+  </div>
+  <div mat-dialog-actions>
+    <button *ngIf="!isUpdateMode()"
+            type="submit"
+            color="primary"
+            mat-raised-button>
+      Ok
+    </button>
+    <button type="button" mat-raised-button (click)="onNoClick()">Close</button>
+    <button *ngIf="isUpdateMode()"
+            type="button"
+            mat-raised-button
+            color="warn"
+            (click)="onDeleteClick()">
+      Delete
+    </button>
+
+  </div>
+</form>

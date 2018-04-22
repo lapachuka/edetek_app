@@ -19,28 +19,21 @@ export class DepartmentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.departmentService.updateDepartmentsList();
     this.departments = this.departmentService.getDepartments();
   }
 
   openCreateDepartmentDialog(): void {
-    const dialogRef: any = this.dialog.open(UpdateDepartmentComponent, {
+    this.dialog.open(UpdateDepartmentComponent, {
       width: '250px',
       data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 
   openUpdateDepartmentDialog(department: Department): void {
-    const dialogRef: any = this.dialog.open(UpdateDepartmentComponent, {
-      width: '250px',
+    this.dialog.open(UpdateDepartmentComponent, {
+      width: '330px',
       data: department
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The eidt dialog was closed');
     });
   }
 
