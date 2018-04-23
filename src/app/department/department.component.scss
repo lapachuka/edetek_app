@@ -2,32 +2,4 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-
-    mat-header-cell:last-child,
-    mat-cell:last-child{
-      display: flex;
-      justify-content: center;
-
-      .mat-mini-fab{
-        box-shadow: none;
-      }
-    }
-
-    mat-row.mat-row {
-      &:hover {
-        background-color: #f9f9f9;
-      }
-    }
-  }
-
-  @media(min-width: 992px) {
-    mat-header-cell:last-child,
-    mat-cell:last-child {
-      flex: 0.5;
-    }
-  }
 }
