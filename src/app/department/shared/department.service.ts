@@ -10,6 +10,7 @@ import {Api} from '../../config/api';
 export class DepartmentService {
   private departmentSubject: BehaviorSubject<Department[]> = new BehaviorSubject<Department[]>([]);
   private readonly departmentUlr: string = Api.URL + '/users/departments';
+
   constructor(private http: HttpClient) {
 
   }

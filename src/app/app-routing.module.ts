@@ -11,9 +11,8 @@ const routes: Routes = [
     loadChildren: 'app/employee/employee.module#EmployeeModule'
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: ''
   }
 ];
 
