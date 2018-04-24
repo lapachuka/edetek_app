@@ -1,6 +1,17 @@
 <div class="employee-container">
-  <mat-table #table [dataSource]="employees | async">
+  <div class="department-filter-container">
+    <mat-select
+      (change)="filterEmployeeResult(departmentId)"
+      [(value)]="departmentId"
+      placeholder="Filter by department">
+      <mat-option>Show all</mat-option>
+      <mat-option *ngFor="let department of departments| async" [value]="department.id">
+        {{ department.name }}
+      </mat-option>
+    </mat-select>
+  </div>
 
+  <mat-table #table [dataSource]="employees | async">
     <ng-container matColumnDef="id" class="">
       <mat-header-cell *matHeaderCellDef> Id</mat-header-cell>
       <mat-cell *matCellDef="let employee"> {{employee.id}}</mat-cell>
@@ -26,7 +37,7 @@
         <button mat-mini-fab color="accent" (click)="openCreateEmployeeDialog()">+</button>
       </mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <button mat-button color="primary" (click)="openUpdateEmployeeDialog(row)" >View</button>
+        <button mat-button color="primary" (click)="openUpdateEmployeeDialog(row)">View</button>
       </mat-cell>
     </ng-container>
 

@@ -25,7 +25,7 @@ import {MatInputModule} from '@angular/material';
     MatDialogModule,
     ReactiveFormsModule
   ],
-  providers: [DepartmentService],
+  providers: [],
   declarations: [DepartmentComponent, UpdateDepartmentComponent],
   entryComponents: [UpdateDepartmentComponent]
 

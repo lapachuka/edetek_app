@@ -1,18 +1,43 @@
-<form class="add-pet-form" [formGroup]="departmentForm" (ngSubmit)="editDepartment(departmentForm)">
-  <h2 mat-dialog-title>Department details</h2>
+<form class="add-pet-form" [formGroup]="employeeForm" (ngSubmit)="editEmployee(employeeForm)">
+  <h2 mat-dialog-title>Employee details</h2>
   <div mat-dialog-content>
-    <mat-form-field class="example-full-width">
+
+    <mat-form-field>
       <input
         matInput
-        placeholder="Department name"
-        formControlName='name'>
+        placeholder="First name"
+        formControlName='first_name'>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-    <textarea
-      matInput
-      placeholder="Department description"
-      formControlName='description'></textarea>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Last name"
+        formControlName='last_name'>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Phone"
+        formControlName='phone'>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        placeholder="Salary"
+        formControlName='salary'>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [(value)]="departmentId" formControlName='departmentId' placeholder="Department">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let department of departments| async" [value]="department.id">
+          {{ department.name }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
 

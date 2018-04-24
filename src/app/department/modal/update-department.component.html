@@ -1,14 +1,14 @@
 <form class="add-pet-form" [formGroup]="departmentForm" (ngSubmit)="editDepartment(departmentForm)">
   <h2 mat-dialog-title>Department details</h2>
   <div mat-dialog-content>
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <input
         matInput
         placeholder="Department name"
         formControlName='name'>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
     <textarea
       matInput
       placeholder="Department description"
