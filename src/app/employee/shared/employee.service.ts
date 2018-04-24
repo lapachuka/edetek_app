@@ -19,7 +19,7 @@ export class EmployeeService {
     return this.employeesSubject.asObservable();
   }
 
-  updateEmployeeList(): void {
+  refreshEmployeeList(): void {
     this.http.get<Employee[]>(this.employeeUrl)
       .subscribe(employees => this.employeesSubject.next(employees));
   }
@@ -27,7 +27,7 @@ export class EmployeeService {
   updateEmployee(employeeId: number, employee: Employee): Observable<Employee> {
     return this.http.put<Employee>(this.employeeUrl + '/' + employeeId, employee)
       .pipe(tap(() => {
-        this.updateEmployeeList();
+        this.refreshEmployeeList();
       }));
   }
 
@@ -44,7 +44,7 @@ export class EmployeeService {
   deleteEmployee(employeeId: number): Observable<Employee> {
     return this.http.delete<Employee>(this.employeeUrl + '/' + employeeId)
       .pipe(tap(() => {
-        this.updateEmployeeList();
+        this.refreshEmployeeList();
       }));
   }
 

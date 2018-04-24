@@ -9,7 +9,7 @@ import {Api} from '../../config/api';
 @Injectable()
 export class DepartmentService {
   private departmentSubject: BehaviorSubject<Department[]> = new BehaviorSubject<Department[]>([]);
-  private readonly departmentUlr: string = Api.URL + '/users/departments';
+  private readonly departmentUrl: string = Api.URL + '/users/departments';
 
   constructor(private http: HttpClient) {
 
@@ -20,22 +20,22 @@ export class DepartmentService {
   }
 
   addDepartment(department): Observable<Department> {
-    return this.http.post<Department>(this.departmentUlr, department)
-      .pipe(tap(() => this.updateDepartmentsList()));
+    return this.http.post<Department>(this.departmentUrl, department)
+      .pipe(tap(() => this.refreshDepartmentList()));
   }
 
   deleteDepartment(departmentId: number): Observable<Department> {
-    return this.http.delete<Department>(this.departmentUlr + '/' + departmentId)
-      .pipe(tap(() => this.updateDepartmentsList()));
+    return this.http.delete<Department>(this.departmentUrl + '/' + departmentId)
+      .pipe(tap(() => this.refreshDepartmentList()));
   }
 
   updateDepartment(departmentId: number, department: Department): Observable<Department> {
-    return this.http.put<Department>(this.departmentUlr + '/' + departmentId, department)
-      .pipe(tap(() => this.updateDepartmentsList()));
+    return this.http.put<Department>(this.departmentUrl + '/' + departmentId, department)
+      .pipe(tap(() => this.refreshDepartmentList()));
   }
 
-  updateDepartmentsList(): void {
-    this.http.get(this.departmentUlr)
+  refreshDepartmentList(): void {
+    this.http.get(this.departmentUrl)
       .subscribe(departments => this.departmentSubject.next(<Department[]>departments));
   }
 

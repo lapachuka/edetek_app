@@ -23,14 +23,14 @@ export class EmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService,
               private departmentService: DepartmentService,
               public dialog: MatDialog) {
-
+    this.employees = this.employeeService.getEmployees();
+    this.departments = this.departmentService.getDepartments();
   }
 
   ngOnInit() {
-    this.employeeService.updateEmployeeList();
-    this.departmentService.updateDepartmentsList();
-    this.employees = this.employeeService.getEmployees();
-    this.departments = this.departmentService.getDepartments();
+    this.employeeService.refreshEmployeeList();
+    this.departmentService.refreshDepartmentList();
+
   }
 
   openCreateEmployeeDialog(): void {

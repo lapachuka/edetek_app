@@ -16,11 +16,11 @@ export class DepartmentComponent implements OnInit {
 
   constructor(private departmentService: DepartmentService,
               public dialog: MatDialog) {
+    this.departments = this.departmentService.getDepartments();
   }
 
   ngOnInit() {
-    this.departmentService.updateDepartmentsList();
-    this.departments = this.departmentService.getDepartments();
+    this.departmentService.refreshDepartmentList();
   }
 
   openCreateDepartmentDialog(): void {
